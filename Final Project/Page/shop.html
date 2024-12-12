@@ -1,0 +1,437 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- ======== CSS ========= -->
+
+    <link rel="stylesheet" href="css/shop.css" />
+
+    <!-- ======== FAVICON ========== -->
+    <link rel="shortcut icon" href="/assets/steering-2-line.svg" type="image/x-co" />
+
+    <!-- ======= REMIX ICONS ======== -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+
+
+
+    <title>Mclaren Website</title>
+</head>
+
+
+
+<body>
+    <!-- ============ HEADER =========== -->
+    <header class="header" id="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-no">
+            <div class="container">
+                <!-- Image logo -->
+
+                <a class="navbar-brand" href="#">
+                    <img src="m1.png" alt="Mclaren Logo" style="height: 70px; width: auto;" />
+                </a>
+
+
+                <!-- Toggle Button (for small screens) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="Index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.html">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Checkout.html">Checkout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id = "userGreeting">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Checkout.html" class="nav-link">
+                                <i class="ri-shopping-cart-line"></i>
+                                <span id="cart-counter" class="cart-counter">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- =========== MAIN ================= -->
+    <main class="main">
+
+        <section class="popular section" id="popular">
+            <h2 class="section__title">
+                All Mclaren Model
+            </h2>
+
+
+
+
+            <!-- Search-bar -->
+
+            <div class="search-sort-container">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search for a car model..." />
+                    <button id="search-button"><i class="ri-search-line"></i> Search</button>
+                </div>
+                <div class="sort-bar">
+                    <label for="sort-select">Sort by:</label>
+                    <select id="sort-select">
+                        <option value="default">Default</option>
+                        <option value="asc">Price: Low to High</option>
+                        <option value="desc">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="popular__container container">
+                <article class="popular__card">
+                    <div class="shape__smaller"></div>
+                    <h1 class="popular__title">P1</h1>
+                    <h3 class="popular__subtitle">V8 twin-turbo</h3>
+
+                    <!-- Car Image -->
+                    <img src="https://pngimg.com/d/Mclaren_PNG79.png" alt="Car Image" class="popular__img" />
+
+                    <div class="popular__data">
+                        <div class="popular__data-group">
+                            <i class="ri-dashboard-3-line"></i> 3.7Sec
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-funds-box-line"></i> 356 Km/h
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-charging-pile-2-line"></i> Electric
+                        </div>
+                    </div>
+
+                    <h3 class="popular__price">$105,2000</h3>
+
+                    <button class="button popular__button" data-car="P1" data-model="V8 twin-turbo" data-price="$105,2000" data-engine="V8"
+                        data-image="https://pngimg.com/d/Mclaren_PNG79.png" onclick="selectCar(this)">
+                        <i class="ri-shopping-bag-2-line"></i>
+                    </button>
+                </article>
+
+                <article class="popular__card">
+                    <div class="shape__smaller"></div>
+                    <h1 class="popular__title">765lt</h1>
+                    <h3 class="popular__subtitle">V8 twin-turbo</h3>
+
+                    <img src="https://www.mclarennorthjersey.com/wp-content/uploads/1765ltspider_cutout-1.png" alt=""
+                        class="popular__img" />
+
+                    <div class="popular__data">
+                        <div class="popular__data-group">
+                            <i class="ri-dashboard-3-line"></i> 3.7Sec
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-funds-box-line"></i> 356 Km/h
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-charging-pile-2-line"></i> Electric
+                        </div>
+                    </div>
+
+                    <h3 class="popular__price">$375,000</h3>
+
+
+                    <button class="button popular__button" data-car="765lt" data-model="V8 twin-turbo"
+                        data-price="$375,000"
+                        data-image="https://www.mclarennorthjersey.com/wp-content/uploads/1765ltspider_cutout-1.png"
+                        onclick="selectCar(this)">
+                        <i class="ri-shopping-bag-2-line"></i>
+                    </button>
+
+
+                    
+                </article>
+
+                <article class="popular__card">
+                    <div class="shape__smaller"></div>
+                    <h1 class="popular__title">750s</h1>
+                    <h3 class="popular__subtitle">V8 twin-turbo</h3>
+
+                    <!-- Car Image -->
+                    <img src="https://pngimg.com/d/Mclaren_PNG13.png" alt="Car Image" class="popular__img" />
+
+                    <div class="popular__data">
+                        <div class="popular__data-group">
+                            <i class="ri-dashboard-3-line"></i> 3.7Sec
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-funds-box-line"></i> 356 Km/h
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-charging-pile-2-line"></i> Electric
+                        </div>
+                    </div>
+
+                    <h3 class="popular__price">$200,000</h3>
+
+                    <button class="button popular__button" data-car="750s" data-model="V8 twin-turbo"
+                        data-price="$200,000" date-engine="v8"
+                        data-image="https://pngimg.com/d/Mclaren_PNG13.png"
+                        onclick="selectCar(this)">
+                        <i class="ri-shopping-bag-2-line"></i>
+                    </button>
+
+                </article> 
+
+                <article class="popular__card">
+                    <div class="shape__smaller"></div>
+                    <h1 class="popular__title">Artura</h1>
+                    <h3 class="popular__subtitle">Turbo S</h3>
+
+                    <img src="https://mclaren.scene7.com/is/image/mclaren/mclaren_automotive_artura_front_left:crop-2x1?fmt=png-alpha&wid=1940&hei=970"
+                        alt="" class="popular__img" />
+
+                    <div class="popular__data">
+                        <div class="popular__data-group">
+                            <i class="ri-dashboard-3-line"></i> 3.7Sec
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-funds-box-line"></i> 356 Km/h
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-charging-pile-2-line"></i> Electric
+                        </div>
+                    </div>
+
+                    <h3 class="popular__price">$175,900</h3>
+
+                    
+                    <button class="button popular__button" data-car="Artura" data-model="V8 twin-turbo"
+                        data-price="$175,000"
+                        data-image="https://mclaren.scene7.com/is/image/mclaren/mclaren_automotive_artura_front_left:crop-2x1?fmt=png-alpha&wid=1940&hei=970"
+                        onclick="selectCar(this)">
+                        <i class="ri-shopping-bag-2-line"></i>
+                    </button>
+
+                </article>
+
+                <article class="popular__card">
+                    <div class="shape__smaller"></div>
+                    <h1 class="popular__title">675lt</h1>
+                    <h3 class="popular__subtitle">Turbo S</h3>
+
+                    <img src="https://mclaren.scene7.com/is/image/mclaren/mclaren_automotive_570s_spider_front_side:crop-2x1?fmt=png-alpha&wid=1940&hei=970"
+                        alt="" class="popular__img" />
+
+                    <div class="popular__data">
+                        <div class="popular__data-group">
+                            <i class="ri-dashboard-3-line"></i> 3.7Sec
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-funds-box-line"></i> 356 Km/h
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-charging-pile-2-line"></i> Electric
+                        </div>
+                    </div>
+
+                    <h3 class="popular__price">$170,000</h3>
+
+                    <button class="button popular__button" data-car="675lt" data-model="V8 twin-turbo"
+                    data-price="$170,000"
+                    data-image="https://mclaren.scene7.com/is/image/mclaren/mclaren_automotive_570s_spider_front_side:crop-2x1?fmt=png-alpha&wid=1940&hei=970"
+                    onclick="selectCar(this)">
+                    <i class="ri-shopping-bag-2-line"></i>
+                </button>
+                </article>
+
+                <article class="popular__card">
+                    <div class="shape__smaller"></div>
+                    <h1 class="popular__title">Solus</h1>
+                    <h3 class="popular__subtitle">Gt car</h3>
+
+                    <img src="https://mclaren.scene7.com/is/image/mclaren/BC08_Front_3Qr:crop-2x1?fmt=png-alpha&wid=1940&hei=970"
+                        alt="" class="popular__img" />
+
+                    <div class="popular__data">
+                        <div class="popular__data-group">
+                            <i class="ri-dashboard-3-line"></i> 3.7Sec
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-funds-box-line"></i> 356 Km/h
+                        </div>
+
+                        <div class="popular__data-group">
+                            <i class="ri-charging-pile-2-line"></i> Electric
+                        </div>
+                    </div>
+
+                    <h3 class="popular__price">$217,5900</h3>
+
+
+                    <button class="button popular__button" data-car="Solus" data-model="V8 twin-turbo"
+                        data-price="$217,5900"
+                        data-image="https://mclaren.scene7.com/is/image/mclaren/BC08_Front_3Qr:crop-2x1?fmt=png-alpha&wid=1940&hei=970"
+                        onclick="selectCar(this)">
+                        <i class="ri-shopping-bag-2-line"></i>
+                    </button>
+
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ============== FOOTER =============== -->
+        <footer class="footer section">
+            <div class="shape shape__big"></div>
+            <div class="shape shape__small"></div>
+
+            <div class="footer__container container grid">
+                <div class="footer__content">
+                    <p class="footer__description">
+                        We offer the best electric cars of <br />
+                        the most recognized brands i <br />
+                        the world.
+                    </p>
+                </div>
+
+                <div class="footer__content">
+                    <h3 class="footer__title">Company</h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">About</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Cars</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">History</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Shop</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__content">
+                    <h3 class="footer__title">Information</h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">Request a quote</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Find a dealer</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Contact us</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer__link">Services</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__content">
+                    <h3 class="footer__title">Follow us</h3>
+
+                    <ul class="footer__social">
+                        <a href="https://ww.facebook.com/" target="_blank" class="footer__social-link">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+
+                        <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                            <i class="ri-twitter-line"></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+        </footer>
+    </main>
+
+    <!-- ========= SCROLL UP ============= -->
+    <a href="" class="scrollup" id="scroll-up">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+
+    <!-- ========= MAIN JS ============= -->
+    <script src="js/Shop.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.min.js"></script>
+
+
+
+</body>
+
+<script>
+function selectCar(button) {
+    const carDetails = {
+        name: button.dataset.car,
+        model: button.dataset.model,
+        price: button.dataset.price,
+        image: button.dataset.image,
+        engine: button.dataset.engine,
+
+    };
+
+    // Store the selected car details in localStorage
+    localStorage.setItem("selectedCar", JSON.stringify(carDetails));
+
+    // Redirect to the configuration page
+    window.location.href = "config.html";
+}
+
+
+
+</script>
+
+
+
+
+
+</html>

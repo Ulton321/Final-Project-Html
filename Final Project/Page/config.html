@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Configuration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="/assets/steering-2-line.svg" type="image/x-co" />
+    <!-- ======= REMIX ICONS ======== -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/config.css">
+</head>
+
+<body>
+
+    <header class="header" id="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-no">
+            <div class="container">
+                <!-- Image logo -->
+                <a class="navbar-brand" href="#">
+                    <img src="m1.png" alt="Mclaren Logo" style="height: 70px; width: auto;" />
+                </a>
+                <!-- Toggle Button (for small screens) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="Index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Checkout.html">Checkout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Login.html">Login</a></li>
+                        <li class="nav-item">
+                            <a href="Checkout.html" class="nav-link">
+                                <i class="ri-shopping-cart-line"></i>
+                                <span id="cart-counter" class="cart-counter">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="popular section" id="popular">
+        <h2 class="section__title">
+            All McLaren Models
+        </h2>
+
+        <div class="popular__container container">
+            <article class="popular__card" id="car-card"
+                data-color-red=""
+                data-color-blue=""
+                data-color-black=""
+                data-color-white="">
+        
+                <h1 class="popular__title" id="car-name">Car Name</h1>
+                <h3 class="popular__subtitle" id="car-model">Car Model</h3>
+        
+                <div class="color-selector">
+                    <label for="car-color">Select Color:</label>
+                    <select id="car-color">
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                    </select>
+                </div>
+        
+                <img id="car-image" src="https://via.placeholder.com/600x400?text=Default+Car" alt="Car Image" class="popular__img" />
+        
+                <div class="popular__data">
+                    <div class="popular__data-group">
+                        <i class="ri-dashboard-3-line"></i> <span id="car-speed">---</span>
+                    </div>
+        
+                    <div class="popular__data-group">
+                        <i class="ri-funds-box-line"></i> <span id="car-top-speed">---</span>
+                    </div>
+        
+                    <div class="popular__data-group">
+                        <i class="ri-charging-pile-2-line"></i> <span id="car-power">---</span>
+                    </div>
+                </div>
+        
+                <h3 id="car-price">$0</h3>
+        
+                <button class="button popular__button" id="configure-button">
+                    <i class="ri-shopping-bag-2-line"></i>
+                </button>
+            </article>
+        </div>
+    </section>
+
+
+    <div id="car-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Car Configuration</h2>
+            <div class="modal-body">
+                <p><strong>Name:</strong> <span id="modal-car-name">Car Name</span></p>
+                <p><strong>Model:</strong> <span id="modal-car-model">Car Model</span></p>
+                <p><strong>Price:</strong> <span id="modal-car-price">$0</span></p>
+                <p><strong>Top Speed:</strong> <span id="modal-car-top-speed">---</span></p>
+                <p><strong>Power:</strong> <span id="modal-car-power">---</span></p>
+                <button id="compare-button" class="button">Compare with Another Car</button>
+                <button id="checkout-button" class="button">Proceed to Checkout</button>
+            </div>
+            <div class="compare-section" style="display: none;">
+                <h3>Compare Cars</h3>
+                <label for="compare-car-select">Select Car to Compare:</label>
+                <select id="car-selector">
+                    <option value="P1">P1</option>
+                    <option value="765lt">765LT</option>
+                    <option value="Artura">Artura</option>
+                    <option value="750S">750S</option>
+                    <option value="720S">720S</option>
+                    <option value="GT">McLaren GT</option>
+                </select>                
+                <div class="comparison-results">
+                    <p><strong>Compared Car Name:</strong> <span id="compare-car-name">---</span></p>
+                    <p><strong>Model:</strong> <span id="compare-car-model">---</span></p>
+                    <p><strong>Price:</strong> <span id="compare-car-price">---</span></p>
+                    <p><strong>Top Speed:</strong> <span id="compare-car-top-speed">---</span></p>
+                    <p><strong>Power:</strong> <span id="compare-car-power">---</span></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+
+
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const colorSelector = document.getElementById("car-color"); // Get the color selector
+    const carImage = document.getElementById("car-image"); // Get the car image element
+    const carCard = document.getElementById("car-card"); // Get the parent article card
+    const carPriceElement = document.getElementById("car-price"); // Get the price element
+    let basePrice = 0; // Variable to store the base price (initial price)
+
+    // Function to format the price as currency
+    function formatPrice(price) {
+        return `$${price.toLocaleString()}`;
+    }
+
+    // Initialize base price from the displayed price
+    basePrice = parseInt(carPriceElement.innerText.replace(/[^0-9]/g, ""), 10);
+
+    // Event listener to change the image and update the price when a color is selected
+    colorSelector.addEventListener("change", function () {
+        const selectedColor = colorSelector.value; // Get selected color (red, blue, etc.)
+        const newImageSrc = carCard.dataset[`color${selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}`];
+
+        if (newImageSrc) {
+            carImage.src = newImageSrc; // Update car image with the selected color
+
+            // Update the price by adding $5000
+            const updatedPrice = basePrice + 5000;
+            carPriceElement.innerText = formatPrice(updatedPrice);
+        } else {
+            carImage.src = "https://via.placeholder.com/600x400?text=Image+Unavailable"; // Fallback image
+        }
+    });
+
+    // Function to initialize the car details
+    window.onload = function () {
+        const selectedCar = JSON.parse(localStorage.getItem("selectedCar"));
+        if (selectedCar) {
+            document.getElementById("car-name").innerText = selectedCar.name;
+            document.getElementById("car-model").innerText = selectedCar.model;
+            carPriceElement.innerText = selectedCar.price;
+
+            const carImage = document.getElementById("car-image");
+            carImage.src = selectedCar.image || "https://via.placeholder.com/600x400?text=Car+Image";
+
+            // Set base price from the stored price
+            basePrice = parseInt(selectedCar.price.replace(/[^0-9]/g, ""), 10);
+        } else {
+            alert("No car selected. Please go back and select a car.");
+        }
+    };
+});
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Define car data
+    const cars = {
+        P1: {
+        name: "P1",
+        model: "V8 Twin-Turbo",
+        price: "$1005,900",
+        speed: "3.7 Sec",
+        topSpeed: "356 Km/h",
+        power: "Electric",
+        colors: {
+            red: "https://mclaren.scene7.com/is/image/mclaren/mclaren_automotive_765lt_front_side_img:crop-2x1?wid=1940&hei=970",
+            blue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqQhBINQ5JAF9-TFfYOHYyo96r36MfpXbIaQ&s",
+            black: "https://i.ebayimg.com/images/g/JMQAAOSwCXhkNZJO/s-l1200.jpg",
+            white: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-d3MXMxfOe1sx4LwWf9AQqXBUswrUsAf3Cw&s",
+        }
+    },
+    "765lt": {
+        name: "765LT",
+        model: "V8 Supercharged",
+        price: "$125,000",
+        speed: "2.8 Sec",
+        topSpeed: "330 Km/h",
+        power: "Hybrid",
+        colors: {
+            red: "https://cdn11.bigcommerce.com/s-tw31ku0q8q/images/stencil/1280x1280/products/9437/72441/MCC28295-1__02811.1710958707.jpg?c=2",
+            blue: "https://i.ytimg.com/vi/VS3qsNjfLAw/maxresdefault.jpg",
+            black: "https://mclaren.scene7.com/is/image/mclaren/mclaren_automotive_765lt_front_side_img:crop-2x1?wid=1940&hei=970",
+            white: "https://via.placeholder.com/600x400?text=White+765LT"
+        }
+    },
+    "Artura": {
+        name: "Artura",
+        model: "V6 twin-turbo",
+        price: "$345,000",
+        speed: "2.8 Sec",
+        topSpeed: "330 Km/h",
+        power: "Hybrid",
+        colors: {
+            red: "https://via.placeholder.com/600x400?text=Red+765LT",
+            blue: "https://mclaren.scene7.com/is/image/mclaren/mclaren_automotive_artura_front_left:crop-2x1?fmt=png-alpha&wid=1940&hei=970",
+            black: "https://via.placeholder.com/600x400?text=Black+765LT",
+            white: "https://via.placeholder.com/600x400?text=White+765LT"
+        }
+    },
+    "750S": {
+        name: "750S",
+        model: "V8 Twin-Turbo",
+        price: "$329,500",
+        speed: "2.7 Sec",
+        topSpeed: "331 Km/h",
+        power: "Petrol",
+        colors: {
+            red: "https://via.placeholder.com/600x400?text=Red+750S",
+            blue: "https://via.placeholder.com/600x400?text=Blue+750S",
+            black: "https://via.placeholder.com/600x400?text=Black+750S",
+            white: "https://via.placeholder.com/600x400?text=White+750S"
+        }
+    },
+    "720S": {
+        name: "720S",
+        model: "V8 Twin-Turbo",
+        price: "$299,000",
+        speed: "2.9 Sec",
+        topSpeed: "341 Km/h",
+        power: "Petrol",
+        colors: {
+            red: "https://via.placeholder.com/600x400?text=Red+720S",
+            blue: "https://via.placeholder.com/600x400?text=Blue+720S",
+            black: "https://via.placeholder.com/600x400?text=Black+720S",
+            white: "https://via.placeholder.com/600x400?text=White+720S"
+        }
+    },
+    "GT": {
+        name: "McLaren GT",
+        model: "V8 Twin-Turbo",
+        price: "$210,000",
+        speed: "3.1 Sec",
+        topSpeed: "326 Km/h",
+        power: "Petrol",
+        colors: {
+            red: "https://via.placeholder.com/600x400?text=Red+GT",
+            blue: "https://via.placeholder.com/600x400?text=Blue+GT",
+            black: "https://via.placeholder.com/600x400?text=Black+GT",
+            white: "https://via.placeholder.com/600x400?text=White+GT"
+        }
+    }
+};
+
+
+
+    // Function to update the car card dynamically
+    function updateCarCard(carKey) {
+        const car = cars[carKey];
+
+        if (car) {
+            // Update car details
+            document.getElementById("car-name").innerText = car.name;
+            document.getElementById("car-model").innerText = car.model;
+            document.getElementById("car-price").innerText = car.price;
+            document.getElementById("car-speed").innerText = car.speed;
+            document.getElementById("car-top-speed").innerText = car.topSpeed;
+            document.getElementById("car-power").innerText = car.power;
+
+            // Update color options
+            const carCard = document.getElementById("car-card");
+            carCard.dataset.colorRed = car.colors.red;
+            carCard.dataset.colorBlue = car.colors.blue;
+            carCard.dataset.colorBlack = car.colors.black;
+            carCard.dataset.colorWhite = car.colors.white;
+
+            // Default image
+            document.getElementById("car-image").src = car.colors.red; // Default to red
+        } else {
+            alert("Car data not found!");
+        }
+    }
+
+    // Handle color change
+    const colorSelector = document.getElementById("car-color");
+    colorSelector.addEventListener("change", function () {
+        const selectedColor = colorSelector.value;
+        const carCard = document.getElementById("car-card");
+        const newImageSrc = carCard.dataset[`color${selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}`];
+
+        const carImage = document.getElementById("car-image");
+        if (newImageSrc) {
+            carImage.src = newImageSrc;
+        } else {
+            carImage.src = "https://via.placeholder.com/600x400?text=Image+Unavailable";
+        }
+    });
+
+    // Example: Load a specific car on page load
+    updateCarCard("P1");
+});
+
+
+//For pop up button when click on the car  
+document.addEventListener("DOMContentLoaded", function () {
+    const configureButton = document.getElementById("configure-button");
+    const modal = document.getElementById("car-modal");
+    const closeModal = document.querySelector(".close-btn");
+    const checkoutButton = document.getElementById("checkout-button");
+
+    // Handle Configure button click
+    configureButton.addEventListener("click", function () {
+        const carName = document.getElementById("car-name").innerText;
+        const carModel = document.getElementById("car-model").innerText;
+        const carPrice = document.getElementById("car-price").innerText;
+        const carTopSpeed = document.getElementById("car-top-speed").innerText;
+        const carPower = document.getElementById("car-power").innerText;
+
+        // Update modal content
+        document.getElementById("modal-car-name").innerText = carName;
+        document.getElementById("modal-car-model").innerText = carModel;
+        document.getElementById("modal-car-price").innerText = carPrice;
+        document.getElementById("modal-car-top-speed").innerText = carTopSpeed;
+        document.getElementById("modal-car-power").innerText = carPower;
+
+        // Show modal
+        modal.style.display = "flex";
+    });
+
+    // Close modal on clicking the close button
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Close modal on clicking outside the modal content
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // Handle Proceed to Checkout button
+    checkoutButton.addEventListener("click", function () {
+        alert("Redirecting to checkout...");
+        // Redirect to checkout page (replace with your actual checkout page URL)
+        window.location.href = "checkout.html";
+    });
+});
+
+
+//compare model function 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const compareButton = document.getElementById("compare-button");
+    const compareSection = document.querySelector(".compare-section");
+    const compareCarSelect = document.getElementById("car-selector");
+
+    // Sample data for comparison cars
+    const carOptions = {
+        P1: {
+            name: "McLaren P1",
+            model: "V8 Twin-Turbo",
+            price: "$1,005,900",
+            topSpeed: "356 Km/h",
+            power: "Electric",
+        },
+        "765LT": {
+            name: "McLaren 765LT",
+            model: "V8 Supercharged",
+            price: "$125,000",
+            topSpeed: "330 Km/h",
+            power: "Hybrid",
+        },
+        Artura: {
+            name: "McLaren Artura",
+            model: "V6 Twin-Turbo",
+            price: "$345,000",
+            topSpeed: "330 Km/h",
+            power: "Hybrid",
+        },
+        "750S": {
+            name: "McLaren 750S",
+            model: "V8 Twin-Turbo",
+            price: "$329,500",
+            topSpeed: "331 Km/h",
+            power: "Petrol",
+        },
+        "720S": {
+            name: "McLaren 720S",
+            model: "V8 Twin-Turbo",
+            price: "$299,000",
+            topSpeed: "341 Km/h",
+            power: "Petrol",
+        },
+        GT: {
+            name: "McLaren GT",
+            model: "V8 Twin-Turbo",
+            price: "$210,000",
+            topSpeed: "326 Km/h",
+            power: "Petrol",
+        },
+    };
+
+    // Show compare section when "Compare" button is clicked
+    compareButton.addEventListener("click", function () {
+        compareSection.style.display = "block";
+    });
+
+    // Update car details when a car is selected
+    compareCarSelect.addEventListener("change", function () {
+        const selectedCar = carOptions[compareCarSelect.value];
+        if (selectedCar) {
+            document.getElementById("compare-car-name").innerText = selectedCar.name;
+            document.getElementById("compare-car-model").innerText = selectedCar.model;
+            document.getElementById("compare-car-price").innerText = selectedCar.price;
+            document.getElementById("compare-car-top-speed").innerText = selectedCar.topSpeed;
+            document.getElementById("compare-car-power").innerText = selectedCar.power;
+        }
+    });
+});
+
+
+    </script>
+</body>
+
+
+</html>
